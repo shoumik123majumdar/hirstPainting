@@ -27,7 +27,7 @@ entry2.pack()
 def buttonClicked():
     global filePath
     filePath = entry1.get()
-    #filePath = 'one-piece.jpg'
+    #filePath = 'monaLisa.jpg'
     global numColors
     numColors = int(entry2.get())
     hirst = HirstGenerator(numColors,filePath)

@@ -15,7 +15,7 @@ filePathLabel.pack()
 entry1 = Entry(window)
 entry1.pack()
 
-fileNameLabel = Label(window,text="Enter the name you want for the file")
+fileNameLabel = Label(window,text="Enter file type (add .jpg/.png)")
 fileNameLabel.pack()
 entry3 = Entry(window)
 entry3.pack()
@@ -25,20 +25,27 @@ numColorLabel.pack()
 entry2 = Entry(window)
 entry2.pack()
 
+
+
 def buttonClicked():
     global filePath
     filePath = requests.get(entry1.get())
-    pathName = "hirstImage"
+    pathName = f"hirstImage{entry3.get()}"
     with open(pathName,'wb') as f:
         f.write(filePath.content)
     global numColors
     numColors = int(entry2.get())
     hirst = HirstGenerator(numColors,pathName)
+    maxLabel = Label(window, text=f"Maximum Number of colors = {hirst.maxColors}")
+    maxLabel.pack()
     hirst.generatePainting()
+    generateButton.config(text="Regenerate")
 
 
 
-generateButton = Button(window,text="Click to generate Painting",command = buttonClicked)
+
+
+generateButton = Button(window,text="Click to generate Painting",fg="green", width = 30, height = 5, command = buttonClicked)
 generateButton.pack()
 
 window.mainloop()

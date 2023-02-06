@@ -26,7 +26,6 @@ entry2 = Entry(window)
 entry2.pack()
 
 
-
 def buttonClicked():
     global filePath
     filePath = requests.get(entry1.get())
@@ -36,8 +35,6 @@ def buttonClicked():
     global numColors
     numColors = int(entry2.get())
     hirst = HirstGenerator(numColors,pathName)
-    maxLabel = Label(window, text=f"Maximum Number of colors = {hirst.maxColors}")
-    maxLabel.pack()
     hirst.generatePainting()
     generateButton.config(text="Regenerate")
 

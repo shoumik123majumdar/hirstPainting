@@ -35,17 +35,21 @@ def buttonClicked():
     global numColors
     numColors = int(entry2.get())
 
+    display = colorDisplay(pathName, 12, 12)
+    display.plot()
+
     hirst = HirstGenerator(numColors,pathName)
     hirst.generatePainting()
     generateButton.config(text="Regenerate")
 
-    display = colorDisplay(pathName, 12, 12)
-    display.plot()
 
 
 
+#Work on resizing the image to optimize the program
 #Work on letting people use the previous image url by writing all of the image urls to a text file.
-#Maybe let people
+#Work on putting the image in the middle of the wheel
+#Work on displaying the different colors that were used in the randomly generated image (connect the two with pandas dataframe).
+
 
 
 

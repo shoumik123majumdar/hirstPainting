@@ -2,7 +2,7 @@ from HirstGenerator import HirstGenerator
 from turtle import Screen
 from tkinter import*
 import requests
-
+from colorDisplay import colorDisplay
 
 screen = Screen()
 window = Tk()
@@ -34,10 +34,18 @@ def buttonClicked():
         f.write(filePath.content)
     global numColors
     numColors = int(entry2.get())
+
     hirst = HirstGenerator(numColors,pathName)
     hirst.generatePainting()
     generateButton.config(text="Regenerate")
 
+    display = colorDisplay(pathName, 12, 12)
+    display.plot()
+
+
+
+#Work on letting people use the previous image url by writing all of the image urls to a text file.
+#Maybe let people
 
 
 

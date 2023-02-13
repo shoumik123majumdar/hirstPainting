@@ -17,7 +17,7 @@ class HirstGenerator():
         self.numColors = numColors
         self.filePath = filePath
         self.colors = colorgram.extract(self.filePath, self.numColors)
-        self.maxColors = len(self.colors)
+
     def getColors(self):
         colorTuples = []
         for color in self.colors:

@@ -18,6 +18,7 @@ class HirstGenerator():
         self.filePath = filePath
         self.colors = colorgram.extract(self.filePath, self.numColors)
 
+
     def getColors(self):
         colorTuples = []
         for color in self.colors:
@@ -43,11 +44,11 @@ class HirstGenerator():
 
 
     def generatePainting(self):
-        colors = self.getRandColors()
+        randColors = self.getRandColors()
         counter = 0
         for i in range(10):
             for z in range(10):
-                color = colors[counter]
+                color = randColors[counter]
                 self.hirst.dot(20,color)
                 self.hirst.forward(40)
                 counter+=1

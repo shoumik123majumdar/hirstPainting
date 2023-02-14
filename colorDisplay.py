@@ -11,9 +11,9 @@ from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
 class colorDisplay():
     def __init__(self,filePath,tolerance,limit):
-        self.colors = extcolors.extract_from_path(filePath,12,12)
+        self.colors = extcolors.extract_from_path(filePath, tolerance, limit)
         self.filePath = filePath
-        print(self.colors)
+
 
 
     def color_to_df(self,input):
@@ -25,8 +25,6 @@ class colorDisplay():
         df_color_up = [rgb2hex(int(i.split(", ")[0].replace("(", "")),
                                int(i.split(", ")[1]),
                                int(i.split(", ")[2].replace(")", ""))) for i in df_rgb]
-        print(df_color_up)
-        print(df_percent)
 
         df = pd.DataFrame(zip(df_color_up, df_percent), columns=['c_code', 'occurence'])
         return df

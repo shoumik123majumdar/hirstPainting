@@ -15,46 +15,57 @@ filePathLabel.pack()
 entry1 = Entry(window)
 entry1.pack()
 
-fileNameLabel = Label(window,text="Enter file type (add .jpg/.png)")
+global BUTTON_2_WAS_CLICKED
+def button2Clicked():
+    global BUTTON_2_WAS_CLICKED
+    BUTTON_2_WAS_CLICKED = True
+    useLastImageButton.config(text="Clicked")
+
+useLastImageButton = Button(window,text="Use the last used image",command = button2Clicked)
+useLastImageButton.pack()
+
+fileNameLabel = Label(window,text="Enter file type (add .jpg if using last image)")
 fileNameLabel.pack()
 entry3 = Entry(window)
 entry3.pack()
 
-numColorLabel = Label(window,text="Enter the number of colors you want to extract from \n If greater than the total number of colors extracted, it will extract the maximum number of colors")
+numColorLabel = Label(window,text="Enter the number of colors you want to extract from")
 numColorLabel.pack()
 entry2 = Entry(window)
 entry2.pack()
 
 
+
 def buttonClicked():
-    global filePath
-    filePath = requests.get(entry1.get())
-    pathName = f"hirstImage{entry3.get()}"
-    with open(pathName,'wb') as f:
-        f.write(filePath.content)
     global numColors
     numColors = int(entry2.get())
+    pathName = f"hirstImage{entry3.get()}"
 
-    display = colorDisplay(pathName, 12, 12)
-    display.plot()
+    global BUTTON_2_WAS_CLICKED
+    if BUTTON_2_WAS_CLICKED == True:
+        hirst = HirstGenerator(numColors,"hirstimage.jpg")
+        BUTTON_2_WAS_CLICKED = False
+    else:
+        global filePath
+        filePath = requests.get(entry1.get())
+        with open(pathName, 'wb') as f:
+            f.write(filePath.content)
+        hirst = HirstGenerator(numColors,pathName)
 
-    hirst = HirstGenerator(numColors,pathName)
     hirst.generatePainting()
+
     generateButton.config(text="Regenerate")
+    useLastImageButton.config(text = "Use last image")
 
-
+    display = colorDisplay(pathName, 12, numColors)
+    display.plot()
 
 
 #Work on resizing the image to optimize the program
-#Work on letting people use the previous image url by writing all of the image urls to a text file.
 #Work on putting the image in the middle of the wheel
-#Work on displaying the different colors that were used in the randomly generated image (connect the two with pandas dataframe).
-
-
-
+#Work on passing the same tuples through the display.
 
 
 generateButton = Button(window,text="Click to generate Painting",fg="green", width = 30, height = 5, command = buttonClicked)
 generateButton.pack()
-
 window.mainloop()

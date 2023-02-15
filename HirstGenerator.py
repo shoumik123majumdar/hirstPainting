@@ -2,7 +2,6 @@ from turtle import Turtle
 import colorgram
 import random
 import turtle
-from turtle import Screen
 
 
 turtle.colormode(255)

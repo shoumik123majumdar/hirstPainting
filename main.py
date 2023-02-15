@@ -35,7 +35,6 @@ entry2 = Entry(window)
 entry2.pack()
 
 
-
 def buttonClicked():
     global numColors
     numColors = int(entry2.get())
@@ -59,11 +58,6 @@ def buttonClicked():
 
     display = colorDisplay(pathName, 12, numColors)
     display.plot()
-
-
-#Work on resizing the image to optimize the program
-#Work on putting the image in the middle of the wheel
-#Work on passing the same tuples through the display.
 
 
 generateButton = Button(window,text="Click to generate Painting",fg="green", width = 30, height = 5, command = buttonClicked)

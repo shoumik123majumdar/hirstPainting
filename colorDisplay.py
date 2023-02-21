@@ -4,11 +4,11 @@ import extcolors
 from colormap import rgb2hex
 
 
+
 class colorDisplay():
     def __init__(self,filePath,tolerance,limit):
         self.colors = extcolors.extract_from_path(filePath, tolerance, limit)
         self.filePath = filePath
-
 
     def color_to_df(self,input):
         # Gets the rgb color and the percentage of occurrence for each color within the image
@@ -51,23 +51,3 @@ class colorDisplay():
         plt.show()
 
 
-"""
-        # color palette
-        x_posi, y_posi, y_posi2 = 160, -170, -170
-        for c in list_color:
-            if list_color.index(c) <= 5:
-                y_posi += 180
-                rect = patches.Rectangle((x_posi, y_posi), 360, 160, facecolor=c)
-                ax2.add_patch(rect)
-                ax2.text(x=x_posi + 400, y=y_posi + 100, s=c, fontdict={'fontsize': 190})
-            else:
-                y_posi2 += 180
-                rect = patches.Rectangle((x_posi + 1000, y_posi2), 360, 160, facecolor=c)
-                ax2.add_artist(rect)
-                ax2.text(x=x_posi + 1400, y=y_posi2 + 100, s=c, fontdict={'fontsize': 190})
-
-        ax2.axis('off')
-        fig.set_facecolor('white')
-        plt.imshow(bg)
-        plt.tight_layout()
-"""

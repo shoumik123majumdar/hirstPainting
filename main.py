@@ -44,16 +44,15 @@ def resize(filePath):
     wpercent = (output_width / float(img.size[0]))
     hsize = int((float(img.size[1]) * float(wpercent)))
     img = img.resize((output_width, hsize), Image.Resampling.LANCZOS)
+    img.save(filePath)
 
-    resize_name = 'resize_' + input_name  # the resized image name
-    img.save(resize_name)
-    return resize_name
 
 
 def buttonClicked():
     global numColors
     numColors = int(entry2.get())
     pathName = f"hirstImage{entry3.get()}"
+    resize(pathName)
 
     global BUTTON_2_WAS_CLICKED
     if BUTTON_2_WAS_CLICKED == True:
@@ -71,8 +70,8 @@ def buttonClicked():
     generateButton.config(text="Regenerate")
     useLastImageButton.config(text = "Use last image")
 
-    resizedPathName = resize(pathName)
-    display = colorDisplay(resizedPathName, 12, numColors)
+
+    display = colorDisplay(pathName, 12, numColors)
     display.plot()
 
 

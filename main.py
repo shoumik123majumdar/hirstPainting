@@ -52,6 +52,7 @@ def buttonClicked():
     global numColors
     numColors = int(entry2.get())
     pathName = f"hirstImage{entry3.get()}"
+
     resize(pathName)
 
     global BUTTON_2_WAS_CLICKED
@@ -63,7 +64,9 @@ def buttonClicked():
         filePath = requests.get(entry1.get())
         with open(pathName, 'wb') as f:
             f.write(filePath.content)
+        resize(pathName)
         hirst = HirstGenerator(numColors,pathName)
+
 
     hirst.generatePainting()
 

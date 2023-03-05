@@ -15,7 +15,7 @@ class HirstGenerator():
         self.hirst.setheading(0)
         self.num_colors = num_colors
         self.file_path = file_path
-        self.colors = colorgram.extract(self.filePath, self.numColors) # extracts the 'num_colors' colors from the image
+        self.colors = colorgram.extract(self.file_path, self.num_colors) # extracts the 'num_colors' colors from the image
 
     # Returns a list of the rgb tuples in 'num_colors'
     def get_colors(self):
